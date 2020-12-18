@@ -4,10 +4,12 @@
   "description": "Luke Backend",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
     "luke": "nodemon server.js"
-    
   },
   "author": "Adil",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
 }
