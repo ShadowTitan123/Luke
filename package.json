@@ -1,0 +1,13 @@
+{
+  "name": "luke",
+  "version": "1.0.0",
+  "description": "Luke Backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "luke": "nodemon server.js"
+    
+  },
+  "author": "Adil",
+  "license": "ISC"
+}
