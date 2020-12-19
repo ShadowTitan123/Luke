@@ -16,31 +16,63 @@
         <div class="row h-100 justify-content-center align-items-center">
           <div class="col-12 col-md-8 col-lg-7 col-xl-5 text-center">
             <div class="login-box">
-              <div class="row">
-                <div class="col">
-                  <h1>Log In</h1>
+              <form id="login-form">
+                <div class="row">
+                  <div class="col">
+                    <h1>Log In</h1>
+                  </div>
                 </div>
-              </div>
-              <div class="row mt-4">
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="Email" />
+                <div class="col mt-4">
+                  <input type="text" class="form-control" placeholder="Email" required/>
                 </div>
-              </div>
-              <div class="row mt-4">
-                <div class="col">
-                  <input type="password" class="form-control mb-1" placeholder="Password" />
-                  <p class="text-right"><a href="">Recover Password</a></p>
+              
+                <div class="col mt-4">
+                  <input type="password" class="form-control mb-1" placeholder="Password" required/>
+                  <p class="text-right"><span id="recover-pwd ">Recover Password</span></p>
                 </div>
-              </div>
-              <div class="row mt-4">
+                
                 <div class="col">
-                  <button class="btn btn-outline-primary" type="button">Submit</button>
+                    <button class="btn btn-outline-primary" type="button">Submit</button>
                 </div>
-              </div>
+              </form>
+
+              <form id="forgot-pwd-form" >
+                <div class="row">
+                  <div class="col">
+                    <h1>Forgot Password</h1>
+                  </div>
+                </div>
+                <div class="col mt-4">
+                  <input type="text" class="form-control" placeholder="Email" required/>
+                  <p class="text-right"><span id="back-login">Back to Login</span></p>
+                </div>
+                <div class="col">
+                    <button class="btn btn-outline-secondary" type="button">Send Mail</button>
+                </div>
+              </form>
+
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+	    $(function() {
+	     $("#forgot-pwd-form").css('display','none');
+    
+	     $( "#recover-pwd" ).click(function() {
+	    	 $("#login-form").css('display','none');
+         $("#forgot-pwd-form").css('display','block');
+       });
+    
+	     $( "#back-login" ).click(function() {
+	    	 $("#forgot-pwd-form").css('display','none');
+         $("#login-form").css('display','block');
+       });
+    
+    });
+	</script>
   </body>
 </html>
