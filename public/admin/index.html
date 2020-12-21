@@ -16,6 +16,7 @@
         <div class="row h-100 justify-content-center align-items-center">
           <div class="col-12 col-md-8 col-lg-7 col-xl-5 text-center">
             <div class="login-box">
+
               <form id="login-form">
                 <div class="row">
                   <div class="col">
@@ -23,16 +24,16 @@
                   </div>
                 </div>
                 <div class="col mt-4">
-                  <input type="text" class="form-control" placeholder="Email" required/>
+                  <input type="text" class="form-control" name="email" placeholder="Email" required/>
                 </div>
               
                 <div class="col mt-4">
-                  <input type="password" class="form-control mb-1" placeholder="Password" required/>
+                  <input type="password" name="password"  class="form-control mb-1" placeholder="Password" required/>
                   <p class="text-right"><span id="recover-pwd ">Recover Password</span></p>
                 </div>
                 
                 <div class="col">
-                    <button class="btn btn-outline-primary" type="button">Submit</button>
+                    <button class="btn btn-outline-primary" type="submit">Submit</button>
                 </div>
               </form>
 
@@ -56,8 +57,10 @@
         </div>
       </div>
     </section>
-
+    <script src="fetch.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
+    <script src="fetch.js"></script>
     <script type="text/javascript">
 	    $(function() {
 	     $("#forgot-pwd-form").css('display','none');
@@ -73,6 +76,14 @@
        });
     
     });
+
+    
+
+
+
+
+
+
 	</script>
   </body>
 </html>
