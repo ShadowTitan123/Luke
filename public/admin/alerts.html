@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="">
     <link href="main.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
 </head>
     
 <link href="main.css" rel="stylesheet"></head>
@@ -193,7 +195,7 @@
                                         <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                                             <thead>
                                             <tr>
-                                                <th class="text-center">Sl. No</th>
+                                               
                                                 <th class="text-center">ID</th>
                                                 <th>Title </th>
                                                 <th>Date</th>
@@ -202,8 +204,8 @@
                                                 <th class="text-center">Actions</th>
                                             </tr>
                                             </thead>
-                                            <tbody>
-                                            <tr>
+                                            <tbody id="getAlertApi">
+                                            <!-- <tr>
                                                 <td class="text-center text-muted">1</td>
                                                 <td class="text-center text-muted">#345</td>
                                                 <td class="text-muted">Selection based on highest wages may be replaced to H-1B lottery</td>
@@ -230,7 +232,7 @@
                                                     <a type="button" href="" class="btn btn-danger btn-sm mr-2"><i class="fa fa-trash"></i></a>
                                                     <a type="button" href="" class="btn btn-outline-primary btn-sm">Edit</a>
                                                 </td>
-                                            </tr>
+                                            </tr> -->
                                             </tbody>
                                         </table>
                                     </div>
@@ -307,29 +309,33 @@
             </div>
           </div>
         </div>
-        <script src="Links/BaseURL.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
-        <script src="fetch.js"></script>
-        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script type="text/javascript" src="./assets/scripts/main.js"></script>
-        <script>
-            (function() {
-                'use strict';
-                window.addEventListener('load', function() {
-                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                    var forms = document.getElementsByClassName('needs-validation');
-                    // Loop over them and prevent submission
-                    var validation = Array.prototype.filter.call(forms, function(form) {
-                        form.addEventListener('submit', function(event) {
-                            if (form.checkValidity() === false) {
-                                event.preventDefault();
-                                event.stopPropagation();
-                            }
-                            form.classList.add('was-validated');
-                        }, false);
-                    });
-                }, false);
-            })();
-        </script>
+       
+    
     </body>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="Links/BaseURL.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>npm install --save toastify-js
+    <script src="postApi/fetch.js"></script>
+    <script src="getApi/alert.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="./assets/scripts/main.js"></script>
+    <script>
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 </html>

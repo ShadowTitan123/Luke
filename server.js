@@ -21,7 +21,7 @@ var storage = multer.diskStorage({
     cb(null, 'uploads')
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now())
+    cb(null, file.fieldname)
   }
 })
 
@@ -103,6 +103,8 @@ app.use(express.static(path.join(__dirname, 'public/admin')));
 //Api and Admin Panel Routes (GET)
 app.get('/api/test', routeHandler);
 app.get('/api/test2', routeHandler);
+app.get('/api/GetAllAlerts', routeHandler);
+
 app.get('/Logout', routeHandler);
 
 
