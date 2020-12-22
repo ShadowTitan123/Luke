@@ -5,7 +5,7 @@ const dbConfig = require('../Db/dbConfig');
 var multer = require('multer');
 
 
-
+// API Tests
 
 router.get('/api/test',(req, res)=>{
     dbConfig.query('SELECT * FROM tbl_admin', function (err, rows, fields) {
@@ -15,14 +15,16 @@ router.get('/api/test',(req, res)=>{
 
 });
 
-
 router.get('/api/test2',(req, res)=>{
     console.log(req.session.id);
 });
 
+
+//Logout
+
 router.get('/Logout',(req, res)=>{
     
-     console.log(req.session.id);
+     console.log(req.session.user);
      req.session.destroy(function(err) {
        console.log('session destroyed');
        res.redirect('/');
@@ -61,6 +63,7 @@ router.post('/LoginAdmin',(req, res)=>{
  });
 
 
+//File Upload 
 
  router.post("/UploadAlertFile", (req, res, next) => {  
     if (req.files === null) {
@@ -78,6 +81,8 @@ router.post('/LoginAdmin',(req, res)=>{
     res.json(file_obj);
     
   });
+
+  //File Details Upload
 
   router.post("/StoreAlertDetails", (req, res) => {  
     const title = req.body.title;
