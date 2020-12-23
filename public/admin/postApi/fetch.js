@@ -74,11 +74,20 @@ AddAlertFile = () => {
                 title: alertForm.elements.namedItem("a_title").value,
                 date: alertForm.elements.namedItem("a_Date").value,
                 path: res.data.path,
-                newFileName: res.data.filename
+                newFileName: res.data.filename,
+                serverPath: res.data.modified
             })
                 .then((res) => {
                     console.log(res.data);
+                    
                     if (res.data.status === true) {
+                        axios.get(`${BaseURL}/api/GetAllAlerts`)
+                        .then((res) => {
+                            AddAlert(res.data);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
                         Toastify({
                             text: "Alert Details Uploaded",
                             duration: 4000,

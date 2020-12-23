@@ -10,22 +10,27 @@ var cookieParser = require('cookie-parser');
 const session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
 const multer = require('multer');
+const renameExtension = require('rename-extension')
 
 // setting destination path
 app.use(multer({ dest: __dirname + '/Files/' }).any());
 
 
+
 // SET STORAGE FOR MULTER
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads')
+    cb(null, './Files')
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname)
+    // cb(null, file.fieldname + '.txt')
+    let ext = mime.extension(file.mimetype);
+    cb(null, Date.now() + ext ) //Appending extension
   }
 })
 
 var upload = multer({ storage: storage })
+
 
 //Database Connection
 const dbConfig = require('./Db/dbConfig');
@@ -95,6 +100,7 @@ app.get('/usefullinks.html', sessionHandler, (req, res) => {
 // Access To All Static Files
 
 app.use(express.static(path.join(__dirname, 'public/admin')));
+app.use(express.static(path.join(__dirname, 'Files')));
 
 
 
@@ -104,8 +110,9 @@ app.use(express.static(path.join(__dirname, 'public/admin')));
 app.get('/api/test', routeHandler);
 app.get('/api/test2', routeHandler);
 app.get('/api/GetAllAlerts', routeHandler);
-
 app.get('/Logout', routeHandler);
+app.get('/Files/GetAlert/:id', routeHandler);
+app.get('/getCurrentAdmin',routeHandler);
 
 
 //Api and Admin Panel Routes (POST)
@@ -113,6 +120,9 @@ app.post('/LoginAdmin', routeHandler);
 app.post('/UploadAlertFile', routeHandler);
 app.post('/StoreAlertDetails', routeHandler);
 
+
+//Api and Admin Panel Routes (Delete)
+app.delete('/DeleteAlert', routeHandler);
 
 
 

@@ -3,7 +3,27 @@ const router = express.Router();
 var mysql = require('mysql')
 const dbConfig = require('../Db/dbConfig');
 var multer = require('multer');
+const renameExtension = require('rename-extension')
+const fs = require('fs');
+const path = require('path');
 
+
+
+
+
+// SET STORAGE FOR MULTER
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './Files')
+  },
+  filename: function (req, file, cb) {
+
+    let ext = mime.extension(file.mimetype);
+    cb(null, Date.now() + ext ) //Appending extension
+  }
+})
+
+var upload = multer({ storage: storage })
 
 // API Tests
 
@@ -65,18 +85,21 @@ router.post('/LoginAdmin', (req, res) => {
 
 //File Upload 
 
-router.post("/UploadAlertFile", (req, res, next) => {
+router.post("/UploadAlertFile",upload.single("file"), (req, res, next) => {
   if (req.files === null) {
     return res.status(400).json({ message: "No file uploaded" });
   }
 
-  console.dir(req.files); // uploading file
+  console.dir(req.files, 'file'); // uploading file
   const file_Arr = req.files;
   const file_obj = {
     filename: file_Arr[0].originalname,
     modified: file_Arr[0].filename,
     path: file_Arr[0].path
   }
+  fs.rename('./Files/'+file_Arr[0].filename, './Files/'+file_Arr[0].filename+'.txt', function(err) {
+    if ( err ) console.log('ERROR: ' + err);
+  });
 
   res.json(file_obj);
 
@@ -89,11 +112,12 @@ router.post("/StoreAlertDetails", (req, res) => {
   const path = req.body.path;
   const newfile = req.body.newFileName;
   const date = req.body.date;
+  const serverPath = 'http://localhost:5000/'+req.body.serverPath+'.txt';
 
 
   console.log(title + path + newfile + date);
   const AddAlert = 'INSERT INTO `tbl_alerts` (`alert_title`, `alert_Date`, `alert_file_path`, `alert_original_file_name`) VALUES (?,?,?,?);';
-  dbConfig.query(AddAlert, [title, date, path, newfile], function (err, result, fields) {
+  dbConfig.query(AddAlert, [title, date, serverPath, newfile], function (err, result, fields) {
     if (err){throw err} 
 
     else if (result) {
@@ -127,6 +151,46 @@ router.post("/StoreAlertDetails", (req, res) => {
   
   });
 
+
+  //Delete Single Alert
+
+  router.delete('/DeleteAlert', (req, res) => {
+    const alertId = req.body.alertId;
+    const findUser = 'DELETE from tbl_alerts where id = ? ';
+    dbConfig.query(findUser, [alertId], function (err, result, fields) {
+      if (err) throw err
+      else if (result.affectedRows > 0) {
+        console.log(result);
+        const Message = {
+          message: "Alert Deleted",
+          status: true
+        }
+        res.json(Message);
+      } else {
+        console.log(result);
+        const Message = {
+          message: "Alert Not Deleted",
+          status: false
+        }
+        res.json(Message);
+      }
+  
+  
+    });
+  });
+
+
+  // Get Single Alert File
+  
+  router.get('/getCurrentAdmin', (req, res) => {
+    if(req.session.user){
+      res.status(200).json({admin_name: req.session.user});
+    }else{
+      res.status(401).json({Message: 'Not Authorized'});
+    }
+ 
+  
+  });
 
 
 
