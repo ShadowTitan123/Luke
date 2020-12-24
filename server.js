@@ -17,19 +17,20 @@ app.use(multer({ dest: __dirname + '/Files/' }).any());
 
 
 
-// SET STORAGE FOR MULTER
+// SET STORAGE and specify destination
 var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
+  destination: function (req, file, cb) {   // destination
     cb(null, './Files')
   },
   filename: function (req, file, cb) {
     // cb(null, file.fieldname + '.txt')
-    let ext = mime.extension(file.mimetype);
+    let ext = mime.extension(file.mimetype);  // set filename
     cb(null, Date.now() + ext ) //Appending extension
   }
 })
 
-var upload = multer({ storage: storage })
+//Init Upload
+var upload = multer({ storage: storage })   // specify .single() or array() if more images 
 
 
 //Database Connection
@@ -98,6 +99,7 @@ app.get('/usefullinks.html', sessionHandler, (req, res) => {
 
 
 // Access To All Static Files
+// making these files public 
 
 app.use(express.static(path.join(__dirname, 'public/admin')));
 app.use(express.static(path.join(__dirname, 'Files')));
@@ -110,6 +112,7 @@ app.use(express.static(path.join(__dirname, 'Files')));
 app.get('/api/test', routeHandler);
 app.get('/api/test2', routeHandler);
 app.get('/api/GetAllAlerts', routeHandler);
+app.get('/api/GetAlertById/:id',routeHandler);
 app.get('/Logout', routeHandler);
 app.get('/Files/GetAlert/:id', routeHandler);
 app.get('/getCurrentAdmin',routeHandler);
@@ -119,6 +122,7 @@ app.get('/getCurrentAdmin',routeHandler);
 app.post('/LoginAdmin', routeHandler);
 app.post('/UploadAlertFile', routeHandler);
 app.post('/StoreAlertDetails', routeHandler);
+
 
 
 //Api and Admin Panel Routes (Delete)

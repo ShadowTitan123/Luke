@@ -16,7 +16,7 @@ if (LoginForm) {
 }
 
 function Login() {
-    console.log('Login');
+    
     const email = LoginForm.elements.namedItem("email").value;
     const password = LoginForm.elements.namedItem("password").value;
 
@@ -25,12 +25,28 @@ function Login() {
         password: password,
     })
         .then((res) => {
-            if (res.data.Exists == true) {
+            if (res.data.Exists === true) {
 
                 console.log(res.data);
                 window.location = `${BaseURL}/dashboard.html`;
             } else {
                 console.log(res.data);
+                if(res.data.Exists === false) {
+                    Toastify({
+                        text: "User Not Found / Incorrect Password",
+                        duration: 4000,
+                        newWindow: true,
+                        close: true,
+                        gravity: "bottom", // `top` or `bottom`
+                        position: 'center', // `left`, `center` or `right`
+                        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                        onClick: function () {
+                           
+                        } // Callback after click
+                    }).showToast();
+
+                }
             }
 
         })

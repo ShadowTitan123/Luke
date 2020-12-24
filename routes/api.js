@@ -6,6 +6,7 @@ var multer = require('multer');
 const renameExtension = require('rename-extension')
 const fs = require('fs');
 const path = require('path');
+const { json } = require('express');
 
 
 
@@ -62,8 +63,8 @@ router.post('/LoginAdmin', (req, res) => {
     if (err) throw err
     else if (result.length > 0) {
       console.log(result);
-      req.session.user = email;
-      req.session.save();
+      req.session.user = email; // setting session user
+      req.session.save();  // save session
       const isAuth = {
         user: result[0].admin_name,
         Exists: true
@@ -91,7 +92,7 @@ router.post("/UploadAlertFile",upload.single("file"), (req, res, next) => {
   }
 
   console.dir(req.files, 'file'); // uploading file
-  const file_Arr = req.files;
+  const file_Arr = req.files;   // req.file contains all data of file after uploading from form
   const file_obj = {
     filename: file_Arr[0].originalname,
     modified: file_Arr[0].filename,
@@ -147,6 +148,32 @@ router.post("/StoreAlertDetails", (req, res) => {
     dbConfig.query('SELECT * FROM tbl_alerts', function (err, rows, fields) {
       if (err) throw err
       res.json(rows);
+    });
+  
+  });
+
+//Get Single Alert By Id
+
+  router.get('/api/GetAlertById/:id', (req, res) => {
+    const alert = req.params.id;
+    const query = 'SELECT * FROM tbl_alerts WHERE id = ?'
+    dbConfig.query(query,[alert] ,function (err, rows, fields) {
+      if (err) throw err
+      else if (rows.length > 0) {
+        const message = {
+          message : 'Data Found',
+          exists : true,
+          data : rows
+        }
+        res.json(message);
+      }else{
+        const message = {
+          message : 'Data Not Found',
+          exists : false,
+          data : []
+        }
+        res.json(message);
+      }
     });
   
   });

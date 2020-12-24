@@ -460,6 +460,7 @@
                 axios.get('/getCurrentAdmin')
                     .then((res) => {
                         console.log(res.data);
+                        
                         document.querySelector('#adminName').innerHTML = res.data.admin_name;
                     })
                     .catch((err) => {

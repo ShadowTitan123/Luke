@@ -312,8 +312,67 @@
             </div>
           </div>
         </div>
+
+
+        <!-- edit -->
        
-    
+        <div class="modal fade" id="editAlerts" tabindex="-1" role="dialog" aria-labelledby="editAlerts" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit Alerts</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+  
+                  <div class="modal-body">
+                      <div class="main-card mb-3 card">
+                          <div class="card-body">
+                              <form class="needs-validation" id="alertForm" novalidate>
+                                  <div class="form-row">
+                                      <div class="col-md-12 mb-3">
+                                          <label for="validationCustom03"> Title</label>
+                                          <input type="text" class="form-control" name="a_title" id="validationCustom03Edit" required>
+                                          <div class="invalid-feedback">
+                                              Please select a valid Title.
+                                          </div>
+                                      </div>
+                                      <div class="col-md-12 mb-3">
+                                          <label for="validationCustom04">Date of Alert</label>
+                                          <input type="date" name="a_Date" class="form-control" id="validationCustom04Edit" placeholder="Enter date" required>
+                                          <div class="invalid-feedback">
+                                              Please provide a valid Date.
+                                          </div>
+                                      </div>
+                                      <!-- <div class="col-md-12 mb-3">
+                                          <label for="validationCustom05">Upload File</label>
+                                          <input type="file" class="form-control" id="validationCustom05" placeholder="Upload file" accept=".txt" required>
+                                          <div class="invalid-feedback">
+                                              Upload a valid file.
+                                          </div>
+                                      </div> -->
+
+                                         <div class="col-md-12 mb-3">
+                                          <label for="validationCustom05">Edit File</label>
+                                          <object  data="http://localhost:5000/7e90dddcecf6bf6c48421ee5b5cc1e5b.txt" type="text/plain"
+                                          width="500" style="height: 300px">
+                                          <a href="/path_to_text_file/text.txt">No Support?</a>
+                                          </object>
+                                      </div>
+
+
+
+                                  </div>
+                                  <button class="btn btn-primary" type="submit">Update Alert</button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+         
     </body>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="Links/BaseURL.js"></script>
