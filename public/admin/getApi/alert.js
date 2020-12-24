@@ -60,7 +60,7 @@ function LoadEditDelete() {
                 .then((res) => {
                     console.log(res.data);
                     if (res.data.status === true) {
-                        axios.get(`${BaseURL}/api/  `) // Calling all alerts for display after deletion
+                        axios.get(`${BaseURL}/api/GetAllAlerts  `) // Calling all alerts for display after deletion
                             .then((res) => {
                                 AddAlert(res.data);
                             })
@@ -86,13 +86,18 @@ function LoadEditDelete() {
         alertid.addEventListener('click', (e) => {
             const alertid = e.target.attributes.title.value; //Get Alert id
             console.log(alertid);
+            document.getElementById('validationCustom03Edit').value ='';
+            document.getElementById('validationCustom04Edit').value = '';
+            document.getElementById('filepath').setAttribute("data", '');
             axios.get(`${BaseURL}/api/GetAlertById/${alertid}`)
             .then((res)=>{
                     console.log(res.data);
                     if(res.data.exists === true){
+
                  
                      document.getElementById('validationCustom03Edit').value = res.data.data[0].alert_title;
                      document.getElementById('validationCustom04Edit').value = res.data.data[0].alert_Date;
+                     document.getElementById('filepath').setAttribute("data", res.data.data[0].alert_file_path);
                      
                         
                     }
