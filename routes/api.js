@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express'); 
+const router = express.Router(); 
 var mysql = require('mysql')
 const dbConfig = require('../Db/dbConfig');
 var multer = require('multer');

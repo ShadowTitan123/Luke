@@ -12,9 +12,9 @@ var MySQLStore = require('express-mysql-session')(session);
 const multer = require('multer');
 const renameExtension = require('rename-extension')
 
+
 // setting destination path
 app.use(multer({ dest: __dirname + '/Files/' }).any());
-
 
 
 // SET STORAGE and specify destination

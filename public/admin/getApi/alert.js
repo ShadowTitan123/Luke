@@ -60,7 +60,7 @@ function LoadEditDelete() {
                 .then((res) => {
                     console.log(res.data);
                     if (res.data.status === true) {
-                        axios.get(`${BaseURL}/api/GetAllAlerts`) // Calling all alerts for display after deletion
+                        axios.get(`${BaseURL}/api/  `) // Calling all alerts for display after deletion
                             .then((res) => {
                                 AddAlert(res.data);
                             })
