@@ -122,6 +122,7 @@ app.get('/getCurrentAdmin',routeHandler);
 app.post('/LoginAdmin', routeHandler);
 app.post('/UploadAlertFile', routeHandler);
 app.post('/StoreAlertDetails', routeHandler);
+app.post('/UpdateAlert', routeHandler);
 
 
 
