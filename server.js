@@ -86,19 +86,19 @@ function sessionHandler(req, res, next) {
 //Setting Middleware for All Admin pages 
 
 app.get('/Admindashboard.html', sessionHandler, (req, res) => {
-  res.sendFile(__dirname + "/public/admin/dashboard.html");
+  res.sendFile(__dirname + "/public/admin/Admindashboard.html");
 });
 app.get('/Adminalerts.html', sessionHandler, (req, res) => {
-  res.sendFile(__dirname + "/public/admin/alerts.html");
+  res.sendFile(__dirname + "/public/admin/Adminalerts.html");
 });
 app.get('/Admincontact.html', sessionHandler, (req, res) => {
-  res.sendFile(__dirname + "/public/admin/contact.html");
+  res.sendFile(__dirname + "/public/admin/Admincontact.html");
 });
 app.get('/Adminenquries.html', sessionHandler, (req, res) => {
-  res.sendFile(__dirname + "/public/admin/enquries.html");
+  res.sendFile(__dirname + "/public/admin/Adminenquries.html");
 });
 app.get('/Adminusefullinks.html', sessionHandler, (req, res) => {
-  res.sendFile(__dirname + "/public/admin/usefullinks.html");
+  res.sendFile(__dirname + "/public/admin/Adminusefullinks.html");
 });
 
 
@@ -119,10 +119,11 @@ app.get('/api/GetAllAlerts', routeHandler);
 app.get('/api/GetAllEnquiries', routeHandler);
 app.get('/api/GetAlertById/:id',routeHandler);
 app.get('/api/GetAllContactDetails',routeHandler);
-
 app.get('/Logout', routeHandler);
 app.get('/Files/GetAlert/:id', routeHandler);
 app.get('/getCurrentAdmin',routeHandler);
+app.get('/api/GetAllLinks',routeHandler);
+app.get('/api/GetLinkById/:id',routeHandler);
 
 
 //Api and Admin Panel Routes (POST)
@@ -131,12 +132,15 @@ app.post('/UploadAlertFile', routeHandler);
 app.post('/StoreAlertDetails', routeHandler);
 app.post('/UpdateAlert', routeHandler);
 app.post('/UpdateContact', routeHandler);
+app.post('/UpdateLink', routeHandler);
+app.post('/AddLink', routeHandler);
 
 
 
 //Api and Admin Panel Routes (Delete)
 app.delete('/DeleteAlert', routeHandler);
 app.delete('/DeleteEnquiry', routeHandler);
+app.delete('/DeleteLink', routeHandler);
 
 
 //Api and Main Site Routes (GET)

@@ -28,7 +28,7 @@ function Login() {
             if (res.data.Exists === true) {
 
                 console.log(res.data);
-                window.location = `${BaseURL}/dashboard.html`;
+                window.location = `${BaseURL}/Admindashboard.html`;
             } else {
                 console.log(res.data);
                 if(res.data.Exists === false) {

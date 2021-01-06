@@ -337,35 +337,35 @@ router.get('/api/GetAllContactDetails', (req, res) => {
 
 
 router.post("/UpdateContact", (req, res) => {
- const addressLine_one = req.body.addressLine_one;
- const addressLine_Two = req.body.addressLine_Two;
- const addressLocation = req.body.addressLocation;
- const contact         = req.body.contact;
- const contact_description = req.body.contact_description;
- const  email              = req.body.email;
- const id                   = req.body.id;
- const status = 1;
+  const addressLine_one = req.body.addressLine_one;
+  const addressLine_Two = req.body.addressLine_Two;
+  const addressLocation = req.body.addressLocation;
+  const contact = req.body.contact;
+  const contact_description = req.body.contact_description;
+  const email = req.body.email;
+  const id = req.body.id;
+  const status = 1;
 
 
-          const query2 = 'UPDATE `tbl_contact_details` SET `addressLine_one` = ? , addressLine_Two = ? , addressLocation = ? , contact = ? , contact_description = ?, email = ? ,status = ? where id = ?';
-          dbConfig.query(query2, [addressLine_one,addressLine_Two,addressLocation,contact,contact_description,email,status,id], function (err, result, fields) {
-            if (err) {
-              const message = {
-                error: err.message,
-                status: false
-              };
-              throw err
-              res.status(500).json(message); // Query Error
-            }
-            else if (result.affectedRows > 0) {  // if data gets updated
-              const message = {
-                message: "Contact Details Updated Successfully",
-                status: true
-              }
-              console.log('Done!');
-              res.status(201).json(message);  // Updated successfully : 201 - The request has succeeded and a new resource has been created as a result. 
-            }  
-      })
+  const query2 = 'UPDATE `tbl_contact_details` SET `addressLine_one` = ? , addressLine_Two = ? , addressLocation = ? , contact = ? , contact_description = ?, email = ? ,status = ? where id = ?';
+  dbConfig.query(query2, [addressLine_one, addressLine_Two, addressLocation, contact, contact_description, email, status, id], function (err, result, fields) {
+    if (err) {
+      const message = {
+        error: err.message,
+        status: false
+      };
+      throw err
+      res.status(500).json(message); // Query Error
+    }
+    else if (result.affectedRows > 0) {  // if data gets updated
+      const message = {
+        message: "Contact Details Updated Successfully",
+        status: true
+      }
+      console.log('Done!');
+      res.status(201).json(message);  // Updated successfully : 201 - The request has succeeded and a new resource has been created as a result. 
+    }
+  })
 });
 
 // Send User Enqueries 
@@ -375,26 +375,26 @@ router.post("/userEnquiries", (req, res) => {
   var enqSubject = req.body.subject;
   var enqMessage = req.body.message;
 
-    const insertEnq = "INSERT INTO `tbl_enquiries` (`name`, `email` , `subject` , `message`) VALUES (?,?,?,?);";
-    dbConfig.query(insertEnq, [enqName, enqEmail, enqSubject, enqMessage], function (err, result, fields) {
-      if (err) {
-        throw err;
-      } else if (result.affectedRows > 0) {
-        console.log(result);
-        const message = {
-          message: "inserted",
-          status: true,
-        };
-        res.json(message);
-      } else {
-        console.log(result);
-        const message = {
-          message: "not inserted",
-          status: false,
-        };
-        res.json(message);
-      }
+  const insertEnq = "INSERT INTO `tbl_enquiries` (`name`, `email` , `subject` , `message`) VALUES (?,?,?,?);";
+  dbConfig.query(insertEnq, [enqName, enqEmail, enqSubject, enqMessage], function (err, result, fields) {
+    if (err) {
+      throw err;
+    } else if (result.affectedRows > 0) {
+      console.log(result);
+      const message = {
+        message: "inserted",
+        status: true,
+      };
+      res.json(message);
+    } else {
+      console.log(result);
+      const message = {
+        message: "not inserted",
+        status: false,
+      };
+      res.json(message);
     }
+  }
   );
 });
 
@@ -406,5 +406,168 @@ router.get("/GetAllAlerts", (req, res) => {
   });
 
 });
+
+
+
+//Get All Links
+router.get('/api/GetAllLinks', (req, res) => {
+  dbConfig.query('SELECT * FROM tbl_usefullinks', function (err, rows, fields) {
+    if (err) throw err
+    res.json(rows);
+  });
+
+});
+
+//Get Single Alert By Id
+router.get('/api/GetLinkById/:id', (req, res) => {
+  const alert = req.params.id;
+  const query = 'SELECT * FROM tbl_usefullinks WHERE id = ?'
+  dbConfig.query(query, [alert], function (err, rows, fields) {
+    if (err) throw err
+    else if (rows.length > 0) {
+      const message = {
+        message: 'Data Found',
+        exists: true,
+        data: rows
+      }
+      res.json(message);
+    } else {
+      const message = {
+        message: 'Data Not Found',
+        exists: false,
+        data: []
+      }
+      res.json(message);
+    }
+  });
+
+});
+
+
+//Delete Single Link
+
+router.delete('/DeleteLink', (req, res) => {
+  const alertId = req.body.alertId;
+  const findUser = 'DELETE from tbl_usefullinks where id = ? ';
+  dbConfig.query(findUser, [alertId], function (err, result, fields) {
+    if (err) throw err
+    else if (result.affectedRows > 0) {
+      //console.log(result);
+      const Message = {
+        message: "Link Deleted",
+        status: true
+      }
+      res.json(Message);
+    } else {
+      // console.log(result);
+      const Message = {
+        message: "Link Not Deleted",
+        status: false
+      }
+      res.json(Message);
+    }
+
+
+  });
+});
+
+
+
+
+router.post("/UpdateContact", (req, res) => {
+  const addressLine_one = req.body.addressLine_one;
+  const addressLine_Two = req.body.addressLine_Two;
+  const addressLocation = req.body.addressLocation;
+  const contact = req.body.contact;
+  const contact_description = req.body.contact_description;
+  const email = req.body.email;
+  const id = req.body.id;
+  const status = 1;
+
+
+  const query2 = 'UPDATE `tbl_contact_details` SET `addressLine_one` = ? , addressLine_Two = ? , addressLocation = ? , contact = ? , contact_description = ?, email = ? ,status = ? where id = ?';
+  dbConfig.query(query2, [addressLine_one, addressLine_Two, addressLocation, contact, contact_description, email, status, id], function (err, result, fields) {
+    if (err) {
+      const message = {
+        error: err.message,
+        status: false
+      };
+      throw err
+      res.status(500).json(message); // Query Error
+    }
+    else if (result.affectedRows > 0) {  // if data gets updated
+      const message = {
+        message: "Contact Details Updated Successfully",
+        status: true
+      }
+      console.log('Done!');
+      res.status(201).json(message);  // Updated successfully : 201 - The request has succeeded and a new resource has been created as a result. 
+    }
+  })
+});
+
+// Update Link 
+router.post("/UpdateLink", (req, res) => {
+  const Tag = req.body.Tag;
+  const Title = req.body.Title;
+  const Link = req.body.Link;
+  const status = req.body.status;
+  const AlertID = req.body.AlertID;
+
+  const insertEnq = "UPDATE `tbl_usefullinks` SET `tag_name` = ? , title = ? , link = ? , status = ?  where id = ?";
+  dbConfig.query(insertEnq, [Tag, Title, Link, status, AlertID], function (err, result, fields) {
+    if (err) {
+      throw err;
+    } else if (result.affectedRows > 0) {
+      console.log(result);
+      const message = {
+        message: "Updated",
+        status: true,
+      };
+      res.json(message);
+    } else {
+      console.log(result);
+      const message = {
+        message: "Not Updated",
+        status: false,
+      };
+      res.json(message);
+    }
+  }
+  );
+});
+
+
+
+// Send User Enqueries 
+router.post("/AddLink", (req, res) => {
+  const Tag = req.body.Tag;
+  const Title = req.body.Title;
+  const Link = req.body.Link;
+  const status = req.body.status;
+
+  const insertEnq = "INSERT INTO `tbl_usefullinks` (`tag_name`, `title` , `link` , `status`) VALUES (?,?,?,?);";
+  dbConfig.query(insertEnq, [Tag, Title, Link, status], function (err, result, fields) {
+    if (err) {
+      throw err;
+    } else if (result.affectedRows > 0) {
+     // console.log(result);
+      const message = {
+        message: "Link Added",
+        status: true,
+      };
+      res.json(message);
+    } else {
+    //  console.log(result);
+      const message = {
+        message: "Failed to Add Link",
+        status: false,
+      };
+      res.json(message);
+    }
+  }
+  );
+});
+
 
 module.exports = router;
