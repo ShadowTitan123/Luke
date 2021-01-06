@@ -11,6 +11,10 @@ const session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
 const multer = require('multer');
 const renameExtension = require('rename-extension')
+var bodyParser = require("body-parser");
+
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // setting destination path
@@ -103,7 +107,7 @@ app.get('/Adminusefullinks.html', sessionHandler, (req, res) => {
 
 app.use(express.static(path.join(__dirname, 'public/admin')));
 app.use(express.static(path.join(__dirname, 'Files')));
-
+app.use(express.static(path.join(__dirname, "public/main")));
 
 
 
@@ -134,6 +138,12 @@ app.post('/UpdateContact', routeHandler);
 app.delete('/DeleteAlert', routeHandler);
 app.delete('/DeleteEnquiry', routeHandler);
 
+
+//Api and Main Site Routes (GET)
+app.get('/fetchAllAlerts', routeHandler);
+
+//Api and Main Site Routes (POST)
+app.post("/userEnquiries", routeHandler);
 
 
 // PORT 

@@ -9,9 +9,6 @@ const path = require('path');
 const { json } = require('express');
 
 
-
-
-
 // SET STORAGE FOR MULTER
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -371,6 +368,43 @@ router.post("/UpdateContact", (req, res) => {
       })
 });
 
+// Send User Enqueries 
+router.post("/userEnquiries", (req, res) => {
+  var enqName = req.body.name;
+  var enqEmail = req.body.email;
+  var enqSubject = req.body.subject;
+  var enqMessage = req.body.message;
 
+    const insertEnq = "INSERT INTO `tbl_enquiries` (`name`, `email` , `subject` , `message`) VALUES (?,?,?,?);";
+    dbConfig.query(insertEnq, [enqName, enqEmail, enqSubject, enqMessage], function (err, result, fields) {
+      if (err) {
+        throw err;
+      } else if (result.affectedRows > 0) {
+        console.log(result);
+        const message = {
+          message: "inserted",
+          status: true,
+        };
+        res.json(message);
+      } else {
+        console.log(result);
+        const message = {
+          message: "not inserted",
+          status: false,
+        };
+        res.json(message);
+      }
+    }
+  );
+});
+
+//Fetch All Alerts and Display
+router.get("/GetAllAlerts", (req, res) => {
+  dbConfig.query('SELECT * FROM tbl_alerts', function (err, rows, fields) {
+    if (err) throw err
+    res.json(rows);
+  });
+
+});
 
 module.exports = router;
