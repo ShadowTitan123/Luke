@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="">
     <link href="main.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
     
 <link href="main.css" rel="stylesheet"></head>
@@ -133,13 +134,13 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="usefullinks.html" class="mm-active">
+                                    <a href="usefullinks.html">
                                         <i class="metismenu-icon pe-7s-link"></i>
                                         Useful Links
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="contact.html">
+                                    <a href="contact.html" class="mm-active">
                                         <i class="metismenu-icon pe-7s-call"></i>
                                         Contact
                                     </a>
@@ -194,11 +195,11 @@
                                                 <th>Contact</th>
                                                 <th>Contact Description</th>
                                                 <th>Email</th>
-                                                <th>Status</th>
+                                               
                                             </tr>
                                             </thead>
-                                            <tbody>
-                                            <tr>
+                                            <tbody id="contactDetails">
+                                            <!-- <tr>
                                                 <td class="text-muted">120 Flint Road,</td>
                                                 <td class="text-muted">Brighton, Michigan 48116</div></td>
                                                 <td class="text-muted">https://goo.gl/maps/xvnu8dt4oQUo8tfu7</td>
@@ -208,7 +209,7 @@
                                                 <td class="text-muted">
                                                     <div class="badge badge-success">Active</div>
                                                 </td>
-                                            </tr>
+                                            </tr> -->
                                             </tbody>
                                         </table>
                                     </div>
@@ -252,7 +253,7 @@
                 <div class="modal-body">
                     <div class="main-card mb-3 card">
                         <div class="card-body">
-                            <form class="needs-validation" novalidate>
+                            <form class="needs-validation ContactFormEdit"  novalidate>
                                 <div class="form-row">
                                     <div class="col-md-12 mb-3">
                                         <label for="validationCustom03">Address Line 1</label>
@@ -270,14 +271,14 @@
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <label for="validationCustom05">Add Location</label>
-                                        <input type="url" class="form-control" id="validationCustom05" placeholder="Google location link" required>
+                                        <input type="text" class="form-control" id="validationCustom05" placeholder="Google location link" required>
                                         <div class="invalid-feedback">
                                             Please provide a valid URL.
                                         </div>
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <label for="validationCustom06">Contact</label>
-                                        <input type="number" class="form-control" id="validationCustom06" placeholder="Enter Telephone number" required>
+                                        <input type="text" class="form-control" id="validationCustom06" placeholder="Enter Telephone number" required>
                                         <div class="invalid-feedback">
                                             Please provide a valid number.
                                         </div>
@@ -297,6 +298,8 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <input type="hidden" id="validationCustom09">
                                 <button class="btn btn-primary" type="submit">Update Contact</button>
                             </form>
                         </div>
@@ -306,6 +309,10 @@
           </div>
         </div>
         
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
+        <script src="Links/BaseURL.js"></script>
+        <script type="text/javascript" src="getApi/contact.js"></script>
         <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
         <script type="text/javascript" src="./assets/scripts/main.js"></script>
         <script>

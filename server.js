@@ -112,7 +112,10 @@ app.use(express.static(path.join(__dirname, 'Files')));
 app.get('/api/test', routeHandler);
 app.get('/api/test2', routeHandler);
 app.get('/api/GetAllAlerts', routeHandler);
+app.get('/api/GetAllEnquiries', routeHandler);
 app.get('/api/GetAlertById/:id',routeHandler);
+app.get('/api/GetAllContactDetails',routeHandler);
+
 app.get('/Logout', routeHandler);
 app.get('/Files/GetAlert/:id', routeHandler);
 app.get('/getCurrentAdmin',routeHandler);
@@ -123,11 +126,13 @@ app.post('/LoginAdmin', routeHandler);
 app.post('/UploadAlertFile', routeHandler);
 app.post('/StoreAlertDetails', routeHandler);
 app.post('/UpdateAlert', routeHandler);
+app.post('/UpdateContact', routeHandler);
 
 
 
 //Api and Admin Panel Routes (Delete)
 app.delete('/DeleteAlert', routeHandler);
+app.delete('/DeleteEnquiry', routeHandler);
 
 
 

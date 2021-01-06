@@ -290,6 +290,86 @@ router.post("/UpdateAlert", (req, res) => {
 });
 
 
+//Get All Enquiries
+router.get('/api/GetAllEnquiries', (req, res) => {
+  dbConfig.query('SELECT * FROM tbl_enquiries', function (err, rows, fields) {
+    if (err) throw err
+    res.json(rows);
+  });
+
+});
+
+
+//Delete Single Enquiry
+
+router.delete('/DeleteEnquiry', (req, res) => {
+  const enqid = req.body.enqid;
+  const findUser = 'DELETE from tbl_enquiries where id = ? ';
+  dbConfig.query(findUser, [enqid], function (err, result, fields) {
+    if (err) throw err
+    else if (result.affectedRows > 0) {
+      console.log(result);
+      const Message = {
+        message: "Enquiry Deleted",
+        status: true
+      }
+      res.json(Message);
+    } else {
+      console.log(result);
+      const Message = {
+        message: "Enquiry Not Deleted",
+        status: false
+      }
+      res.json(Message);
+    }
+
+
+  });
+});
+
+
+//Get All Contacts
+router.get('/api/GetAllContactDetails', (req, res) => {
+  dbConfig.query('SELECT * FROM tbl_contact_details', function (err, rows, fields) {
+    if (err) throw err
+    res.json(rows);
+  });
+
+});
+
+
+
+router.post("/UpdateContact", (req, res) => {
+ const addressLine_one = req.body.addressLine_one;
+ const addressLine_Two = req.body.addressLine_Two;
+ const addressLocation = req.body.addressLocation;
+ const contact         = req.body.contact;
+ const contact_description = req.body.contact_description;
+ const  email              = req.body.email;
+ const id                   = req.body.id;
+ const status = 1;
+
+
+          const query2 = 'UPDATE `tbl_contact_details` SET `addressLine_one` = ? , addressLine_Two = ? , addressLocation = ? , contact = ? , contact_description = ?, email = ? ,status = ? where id = ?';
+          dbConfig.query(query2, [addressLine_one,addressLine_Two,addressLocation,contact,contact_description,email,status,id], function (err, result, fields) {
+            if (err) {
+              const message = {
+                error: err.message,
+                status: false
+              };
+              throw err
+              res.status(500).json(message); // Query Error
+            }
+            else if (result.affectedRows > 0) {  // if data gets updated
+              const message = {
+                message: "Contact Details Updated Successfully",
+                status: true
+              }
+              console.log('Done!');
+              res.status(201).json(message);  // Updated successfully : 201 - The request has succeeded and a new resource has been created as a result. 
+            }  
+      })
+});
 
 
 
