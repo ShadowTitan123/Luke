@@ -81,19 +81,19 @@ function sessionHandler(req, res, next) {
 
 //Setting Middleware for All Admin pages 
 
-app.get('/dashboard.html', sessionHandler, (req, res) => {
+app.get('/Admindashboard.html', sessionHandler, (req, res) => {
   res.sendFile(__dirname + "/public/admin/dashboard.html");
 });
-app.get('/alerts.html', sessionHandler, (req, res) => {
+app.get('/Adminalerts.html', sessionHandler, (req, res) => {
   res.sendFile(__dirname + "/public/admin/alerts.html");
 });
-app.get('/contact.html', sessionHandler, (req, res) => {
+app.get('/Admincontact.html', sessionHandler, (req, res) => {
   res.sendFile(__dirname + "/public/admin/contact.html");
 });
-app.get('/enquries.html', sessionHandler, (req, res) => {
+app.get('/Adminenquries.html', sessionHandler, (req, res) => {
   res.sendFile(__dirname + "/public/admin/enquries.html");
 });
-app.get('/usefullinks.html', sessionHandler, (req, res) => {
+app.get('/Adminusefullinks.html', sessionHandler, (req, res) => {
   res.sendFile(__dirname + "/public/admin/usefullinks.html");
 });
 
