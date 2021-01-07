@@ -160,6 +160,13 @@ UpdateLinks = () => {
 
                             } // Callback after click
                         }).showToast();
+                        axios.get(`${BaseURL}/api/GetAllLinks`)
+                        .then((res) => {
+                            AddLinks(res.data);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
                     } else {
                         Toastify({
                             text: res.data.message,

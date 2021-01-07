@@ -519,14 +519,14 @@ router.post("/UpdateLink", (req, res) => {
     if (err) {
       throw err;
     } else if (result.affectedRows > 0) {
-      console.log(result);
+     // console.log(result);
       const message = {
         message: "Updated",
         status: true,
       };
       res.json(message);
     } else {
-      console.log(result);
+    //  console.log(result);
       const message = {
         message: "Not Updated",
         status: false,
