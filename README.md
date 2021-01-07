@@ -1,4 +1,4 @@
-# Luke Admin NodeJS App
+# Luke NodeJS App
 
 # Admin - Adil & Zabeeh 
 
