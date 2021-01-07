@@ -124,6 +124,7 @@ app.get('/Files/GetAlert/:id', routeHandler);
 app.get('/getCurrentAdmin',routeHandler);
 app.get('/api/GetAllLinks',routeHandler);
 app.get('/api/GetLinkById/:id',routeHandler);
+app.get('/api/GetHomepageCounts',routeHandler);
 
 
 //Api and Admin Panel Routes (POST)
@@ -134,7 +135,6 @@ app.post('/UpdateAlert', routeHandler);
 app.post('/UpdateContact', routeHandler);
 app.post('/UpdateLink', routeHandler);
 app.post('/AddLink', routeHandler);
-
 
 
 //Api and Admin Panel Routes (Delete)

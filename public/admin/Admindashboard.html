@@ -65,8 +65,8 @@
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true"
                                             class="dropdown-menu dropdown-menu-right">
-                                            <a tabindex="0" class="dropdown-item">Contact Details</a>
-                                            <a tabindex="0" class="dropdown-item">Logout</a>
+                                            <a tabindex="0" href="Admincontact.html" class="dropdown-item">Contact Details</a>
+                                            <a tabindex="0" href="/Logout"class="dropdown-item">Logout</a>
                                         </div>
                                     </div>
                                 </div>
@@ -123,32 +123,32 @@
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Main</li>
                             <li>
-                                <a href="dashboard.html" class="mm-active">
+                                <a href="Admindashboard.html" class="mm-active">
                                     <i class="metismenu-icon pe-7s-culture"></i>
                                     Dashboard
                                 </a>
                             </li>
                             <li class="app-sidebar__heading">View</li>
                             <li>
-                                <a href="enquries.html">
+                                <a href="Adminenquries.html">
                                     <i class="metismenu-icon pe-7s-attention"></i>
                                     Enquries
                                 </a>
                             </li>
                             <li>
-                                <a href="alerts.html">
+                                <a href="Adminalerts.html">
                                     <i class="metismenu-icon pe-7s-bell"></i>
                                     Alerts
                                 </a>
                             </li>
                             <li>
-                                <a href="usefullinks.html">
+                                <a href="Adminusefullinks.html">
                                     <i class="metismenu-icon pe-7s-link"></i>
                                     Useful Links
                                 </a>
                             </li>
                             <li>
-                                <a href="contact.html">
+                                <a href="Admincontact.html">
                                     <i class="metismenu-icon pe-7s-call"></i>
                                     Contact
                                 </a>
@@ -189,7 +189,7 @@
                                         <div class="widget-subheading">Total alerts</div>
                                     </div>
                                     <div class="widget-content-right">
-                                        <div class="widget-numbers text-white"><span>40</span></div>
+                                        <div class="widget-numbers text-white"><span id="a1">40</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -202,7 +202,7 @@
                                         <div class="widget-subheading">Total Clients</div>
                                     </div>
                                     <div class="widget-content-right">
-                                        <div class="widget-numbers text-white"><span>568</span></div>
+                                        <div class="widget-numbers text-white"><span id="a2">568</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -215,7 +215,7 @@
                                         <div class="widget-subheading">Enquires by users</div>
                                     </div>
                                     <div class="widget-content-right">
-                                        <div class="widget-numbers text-white"><span>253</span></div>
+                                        <div class="widget-numbers text-white"><span id="a3">253</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -224,63 +224,30 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="main-card mb-3 card">
-                                <div class="card-header">Alerts
+                                <div class="card-header">Latest Alerts
                                     <div class="btn-actions-pane-right">
-                                        <div role="group" class="btn-group-sm btn-group">
-                                            <a class="active btn btn-focus">Last Week</a>
-                                            <a class="btn btn-focus">All Month</a>
-                                        </div>
+                                       
                                     </div>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                                         <thead>
                                             <tr>
-                                                <th class="text-center">Sl. No</th>
                                                 <th class="text-center">ID</th>
-                                                <th>Title </th>
-                                                <th>Date</th>
-                                                <th>File</th>
-                                                <th class="text-center">Status</th>
-                                                <th class="text-center">Actions</th>
+                                                    <th>Title </th>
+                                                    <th>Date</th>
+                                                    <th>File</th>
+                                                    <th class="text-center">Status</th>
+                                               
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-center text-muted">1</td>
-                                                <td class="text-center text-muted">#345</td>
-                                                <td class="text-muted">Selection based on highest wages may be replaced
-                                                    to H-1B lottery</td>
-                                                <td class="text-muted">25/10/2020</td>
-                                                <td class="text-muted"><i class="fa fa-file"></i></td>
-                                                <td class="text-center">
-                                                    <div class="badge badge-success">Active</div>
-                                                </td>
-                                                <td class="text-center">
-                                                    <a type="button" id="PopoverCustomT-1"
-                                                        class="btn btn-primary btn-sm">Details</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center text-muted">2</td>
-                                                <td class="text-center text-muted">#347</td>
-                                                <td class="text-muted">EB priority dates for October 2020 changed
-                                                    Significantly</td>
-                                                <td class="text-muted">18/04/2020</td>
-                                                <td class="text-muted"><i class="fa fa-file"></i></td>
-                                                <td class="text-center">
-                                                    <div class="badge badge-warning">Pending</div>
-                                                </td>
-                                                <td class="text-center">
-                                                    <a type="button" id="PopoverCustomT-2"
-                                                        class="btn btn-primary btn-sm">Details</a>
-                                                </td>
-                                            </tr>
+                                        <tbody id="getAlertApi">
+                                          
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="d-block text-right card-footer">
-                                    <a class="btn-wide btn btn-success">View More</a>
+                                    <a class="btn-wide btn btn-success" href="Adminalerts.html">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -288,12 +255,9 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="main-card mb-3 card">
-                                <div class="card-header">Enquiries
+                                <div class="card-header">Latest Enquiries
                                     <div class="btn-actions-pane-right">
-                                        <div role="group" class="btn-group-sm btn-group">
-                                            <button class="active btn btn-focus">Last Week</button>
-                                            <button class="btn btn-focus">All Month</button>
-                                        </div>
+                                       
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -305,48 +269,17 @@
                                                 <th>Email</th>
                                                 <th>Subject</th>
                                                 <th>Message</th>
-                                                <th class="text-center">Status</th>
-                                                <th class="text-center">Details</th>
+                                                <th class="text-center"> Action </th>
+                                              
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-center text-muted">#1</td>
-                                                <td>
-                                                    <div class="widget-heading">John Doe</div>
-                                                </td>
-                                                <td class="text-muted">Application for Visa</td>
-                                                <td class="text-muted">doe@gmail.com</td>
-                                                <td class="text-muted">I would like to apply for a H1-B visa</td>
-                                                <td class="text-center">
-                                                    <div class="badge badge-success">Replied</div>
-                                                </td>
-                                                <td class="text-center">
-                                                    <a type="button" id="PopoverCustomT-1"
-                                                        class="btn btn-primary btn-sm">Details</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center text-muted">#1</td>
-                                                <td>
-                                                    <div class="widget-heading">John Doe</div>
-                                                </td>
-                                                <td class="text-muted">doe@gmail.com</td>
-                                                <td class="text-muted">Application for Visa</td>
-                                                <td class="text-muted">I would like to apply for a H1-B visa</td>
-                                                <td class="text-center">
-                                                    <div class="badge badge-warning">pending</div>
-                                                </td>
-                                                <td class="text-center">
-                                                    <a type="button" id="PopoverCustomT-1"
-                                                        class="btn btn-primary btn-sm">Details</a>
-                                                </td>
-                                            </tr>
+                                        <tbody id="getEnquiries">
+                                           
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="d-block text-right card-footer">
-                                    <a class="mr-2 btn-icon btn-icon-only btn btn-outline-success">View More</a>
+                                    <a class="mr-2 btn-icon btn-icon-only btn btn-outline-success" href="Adminenquries.html">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -356,10 +289,7 @@
                             <div class="main-card mb-3 card">
                                 <div class="card-header">Useful Links
                                     <div class="btn-actions-pane-right">
-                                        <div role="group" class="btn-group-sm btn-group">
-                                            <button class="active btn btn-focus">Last Week</button>
-                                            <button class="btn btn-focus">All Month</button>
-                                        </div>
+                                      
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -371,48 +301,15 @@
                                                 <th>Title</th>
                                                 <th>Link</th>
                                                 <th class="text-center">Status</th>
-                                                <th class="text-center">Details</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-center text-muted">#1</td>
-                                                <td>
-                                                    <div class="widget-heading">Compliance</div>
-                                                </td>
-                                                <td class="text-muted">AILA Summary of Legal Workforce Act H.R. 2164
-                                                </td>
-                                                <td class="text-muted">
-                                                    https://www.aila.org/infonet/section-by-section-legal-workforce-act-hr-2164
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="badge badge-success">Active</div>
-                                                </td>
-                                                <td class="text-center">
-                                                    <a type="button" id="PopoverCustomT-1"
-                                                        class="btn btn-primary btn-sm">Details</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center text-muted">#2</td>
-                                                <td>
-                                                    <div class="widget-heading">USCIS</div>
-                                                </td>
-                                                <td class="text-muted">Online Case Status</td>
-                                                <td class="text-muted">https://egov.uscis.gov/casestatus/landing.do</td>
-                                                <td class="text-center">
-                                                    <div class="badge badge-warning">Inactive</div>
-                                                </td>
-                                                <td class="text-center">
-                                                    <a type="button" id="PopoverCustomT-1"
-                                                        class="btn btn-primary btn-sm">Details</a>
-                                                </td>
-                                            </tr>
+                                        <tbody id="getlinksapi">
+                                           
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="d-block text-right card-footer">
-                                    <a class="mr-2 btn-icon btn-icon-only btn btn-success">View More</a>
+                                    <a class="mr-2 btn-icon btn-icon-only btn btn-success" href="Adminusefullinks.html">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -448,6 +345,7 @@
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
     <script src="Links/BaseURL.js"></script>
+    <script src="getApi/dashboard.js"></script>
     <script src="postApi/fetch.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/nextapps-de/flexsearch@master/dist/flexsearch.min.js"></script>
     </body>
@@ -473,6 +371,27 @@
 
 
     </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        getAdmins();
+        function getAdmins() {
+            axios.get('/getCurrentAdmin')
+                .then((res) => {
+                    console.log(res.data);
+                    
+                    document.querySelector('#adminName').innerHTML = res.data.admin_name;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+
+
+        }
+    }, false);
+
+
+</script>
 
 
 </html>

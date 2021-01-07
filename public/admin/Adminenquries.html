@@ -59,14 +59,14 @@
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                            <a tabindex="0" class="dropdown-item">Contact Details</a>
-                                            <a tabindex="0" class="dropdown-item">Logout</a>
+                                            <a tabindex="0" href="Admincontact.html" class="dropdown-item">Contact Details</a>
+                                            <a tabindex="0" href="/Logout"class="dropdown-item">Logout</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="widget-content-left  ml-3 header-user-info">
-                                    <div class="widget-heading">
-                                        Admin
+                                    <div class="widget-heading" id="adminName">
+
                                     </div>
                                     <div class="widget-subheading">
                                         Administrator
@@ -114,39 +114,39 @@
                             <ul class="vertical-nav-menu">
                                 <li class="app-sidebar__heading">Main</li>
                                 <li>
-                                    <a href="dashboard.html">
+                                    <a href="Admindashboard.html">
                                         <i class="metismenu-icon pe-7s-culture"></i>
                                         Dashboard
                                     </a>
                                 </li>
                                 <li class="app-sidebar__heading">View</li>
                                 <li>
-                                    <a href="enquries.html" class="mm-active">
+                                    <a href="Adminenquries.html" class="mm-active">
                                         <i class="metismenu-icon pe-7s-attention"></i>
                                         Enquries
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="alerts.html">
+                                    <a href="Adminalerts.html">
                                         <i class="metismenu-icon pe-7s-bell"></i>
                                         Alerts
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="usefullinks.html">
+                                    <a href="Adminusefullinks.html">
                                         <i class="metismenu-icon pe-7s-link"></i>
                                         Useful Links
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="contact.html">
+                                    <a href="Admincontact.html">
                                         <i class="metismenu-icon pe-7s-call"></i>
                                         Contact
                                     </a>
                                 </li>
                                 <li class="app-sidebar__heading">Settings</li>
                                 <li>
-                                    <a href="enquries.html">
+                                    <a href="/Logout">
                                         <i class="metismenu-icon pe-7s-power"></i>
                                         Logout
                                     </a>
@@ -241,6 +241,26 @@
                 </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            getAdmins();
+            function getAdmins() {
+                axios.get('/getCurrentAdmin')
+                    .then((res) => {
+                        console.log(res.data);
+                        
+                        document.querySelector('#adminName').innerHTML = res.data.admin_name;
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+
+
+            }
+        }, false);
+
+
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
     <script src="Links/BaseURL.js"></script>
     <script type="text/javascript" src="getApi/enquiry.js"></script>

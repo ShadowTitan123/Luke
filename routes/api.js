@@ -7,6 +7,11 @@ const renameExtension = require("rename-extension");
 const fs = require("fs");
 const path = require("path");
 const { json } = require("express");
+let AlertCount;
+let LinksCount;
+let enquiresCount;
+let OutputCounts = [];
+
 
 // SET STORAGE FOR MULTER
 var storage = multer.diskStorage({
@@ -544,5 +549,66 @@ router.get("/fetchAllLinks", (req, res) => {
     res.json(rows);
   });
 });
+
+
+//Fetch All Counts and Display
+router.get("/api/GetHomepageCounts", (req, res) => {
+    //Global Variables 
+   
+  dbConfig.query("SELECT * FROM tbl_alerts", function (err, rows, fields) {
+  
+    if (err) throw err;
+  //  res.json(rows);
+  if(!err){
+    AlertCount = rows.length;
+  //  console.log(AlertCount);
+   OutputCount(AlertCount,1); // Callback is required as connection query is async
+  }
+  });
+ 
+
+  dbConfig.query("SELECT * FROM tbl_usefullinks", function (err, rows, fields) {
+    if (err) throw err;
+  //  res.json(rows);
+  // console.log(rows.length);
+   LinksCount = rows.length;
+   OutputCount(LinksCount,2); //Callback
+  });
+ 
+
+  dbConfig.query("SELECT * FROM tbl_enquiries", function (err, rows, fields) {
+    if (err) throw err;
+  //  res.json(rows);
+  // console.log(rows.length);
+   enquiresCount = rows.length;
+   OutputCount(enquiresCount,3); // Callback
+  });
+  
+ 
+  
+ function OutputCount(CountName,index){  //callback function
+   if(index === 1){
+    OutputCounts.push({"AlertCount" : CountName})
+   }
+   else if(index === 2){
+    OutputCounts.push({"LinksCount" : LinksCount})
+   }else{
+    OutputCounts.push({"enquiresCount" : enquiresCount})
+   }
+  
+  if(OutputCounts.length>=3){
+    console.log(OutputCounts)
+    SendResponse(OutputCounts);
+  }
+  }
+
+  function SendResponse(Response){
+    res.json(Response);
+  }
+ 
+
+});
+
+
 
 module.exports = router;

@@ -2,8 +2,9 @@
 // Method : Get 
 
 axios
-  .get(`./admin/Links/api/GetAllAlerts`)
+  .get(`${BaseURL}/api/GetAllAlerts`)
   .then((res) => {
+      console.log(res.data);
     AddAlert(res.data);
   })
   .catch((err) => {
@@ -18,14 +19,13 @@ AddAlert = (res) => {
     let AppendData = '';
     const AlertTable = document.querySelector('#getAlertApi');
     res.forEach(function (alert, index) {
+       
         AppendData += `<tr>
             <td class="text-center text-muted">${alert.id}</td>
             <td class="text-muted">${alert.alert_title}</td>
             <td class="text-muted">${alert.alert_Date}</td>
             <td class="text-muted">  <a href="${alert.alert_file_path}">  <i class="fa fa-file">     </i> </a> </td>
-            <td class="text-center">
-                <div class="badge badge-success">Active</div>
-            </td>
+      
             <td class="text-center d-flex">
                 <a type="button"  class="btn btn-danger btn-sm mr-2"> <i class="fa fa-trash AlertDelete" title ="${alert.id}"> </i> </a>
                 <a type="button" title ="${alert.id}" class="btn btn-outline-primary btn-sm AlertEdit" data-toggle="modal" data-target="#editAlerts">Edit</a>

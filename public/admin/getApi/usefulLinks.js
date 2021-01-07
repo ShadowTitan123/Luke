@@ -18,14 +18,23 @@ AddLinks = (res) => {
     let AppendData = '';
     const AlertTable = document.querySelector('#getlinksapi');
     res.forEach(function (alert, index) {
+        let statusCheck;
+        if(alert.status === 1){
+        statusCheck =     `<td class="text-center">
+            <div class="badge badge-success">Active</div>
+        </td>`;
+        }
+        else{
+             statusCheck = `<td class="text-center">
+            <div class="badge badge-info">Disabled</div>
+        </td>`;
+        }
         AppendData += ` <tr>
         <td class="text-center text-muted">${alert.id}</td>
         <td><div class="widget-heading">${alert.tag_name}</div></td>
         <td class="text-muted">${alert.title}</td>
         <td class="text-muted">${alert.link}</td>
-        <td class="text-center">
-            <div class="badge badge-success">Active</div>
-        </td>
+        ${statusCheck}
         <td class="text-center d-flex">
             <a type="button"  class="btn btn-danger btn-sm mr-2"><i class="fa fa-trash LinkDelBtn" title="${alert.id}"></i></a>
             <a type="button" title="${alert.id}" class="btn btn-outline-primary btn-sm LinkEditBtn" data-toggle="modal" data-target="#editLinks">Edit</a>
