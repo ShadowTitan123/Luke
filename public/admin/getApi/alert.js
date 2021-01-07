@@ -1,13 +1,14 @@
 // Get All alerts for Display 
 // Method : Get 
 
-axios.get(`${BaseURL}/api/GetAllAlerts`)
-    .then((res) => {
-        AddAlert(res.data);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+axios
+  .get(`./admin/Links/api/GetAllAlerts`)
+  .then((res) => {
+    AddAlert(res.data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 
 

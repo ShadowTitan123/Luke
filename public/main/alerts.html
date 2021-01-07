@@ -225,7 +225,6 @@
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/plugins.js"></script>
 
-    <!--contact js-->
     <script src="js/main.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
@@ -237,10 +236,11 @@
 
 <script>
   $(document).ready(function () {
+    const BaseURL = 'http://localhost:5000';
     axios
-      .get(`${BaseURL}/GetAllAlerts`)
+      .get(`${BaseURL}/fetchAllAlerts`)
       .then((res) => {
-        AddAlert(res.data);
+        displayAlert(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -248,13 +248,13 @@
 
     //Append Alerts To Client Side
 
-    AddAlert = (res) => {
+    displayAlert = (res) => {
       let AppendData = "";
       const alertList = document.querySelector("#fetchAlertApi");
       res.forEach(function (alert, index) {
         AppendData += `<li>
-            <h4>${alert.alert_Date} </h4>
-            <a href="alertdetails.html#${alert.id}" target="_blank"><span>${alert.alert_title}</span></a>
+            <h4>${alert.alert_Date}</h4>
+            <a href="alertdetails.html#${alert.id}" ta3rget="_blank"><span>${alert.alert_title}</span></a>
           </li>
         `;
       });

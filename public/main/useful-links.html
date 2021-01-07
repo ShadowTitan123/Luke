@@ -126,51 +126,40 @@
         <div class="col-lg-4 col-md-4 mt-4">
           <h4>VISAS related</h4>
           <div class="sepr mt-1"></div>
-          <ul>
-            <li><a href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/forms/ds-160-online-nonimmigrant-visa-application/ds-160-faqs.html">DS-160 Visa Application Form</a></li>
-            <li><a href="https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visa-waiver-program.html">ESTA</a></li>
-            <li><a href="https://www.usembassy.gov/">U.S. Embassies & Consulates Worldwide</a></li>
-            <li><a href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html">Visa Bulletin</a></li>
-            <li><a href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fees/fees-reciprocity-tables.html">Visa Fees & Reciprocity Schedule</a></li>
-          </ul>
+          <ul id="h1"></ul>
         </div>
         <div class="col-lg-4 col-md-4 mt-4">
           <h4>Compliance</h4>
           <div class="sepr mt-1"></div>
-          <ul>
-            <li><a href="https://www.aila.org/infonet/section-by-section-legal-workforce-act-hr-2164">AILA Summary of Legal Workforce Act H.R. 2164</a></li>
-            <li><a href="https://www.e-verify.gov/">E-Verify</a></li>
-            <li><a href="https://www.uscis.gov/i-9">Employment Eligibility Verification (I-9)</a></li>
-            <li><a href="#">Sample Fraud Detection Unit questionnaire</a></li>
-          </ul>
+            <ul id="h2"></ul>
         </div>
         <div class="col-lg-4 col-md-4 mt-4">
           <h4>USCIS</h4>
           <div class="sepr mt-1"></div>
-          <ul>
-            <li><a href="https://egov.uscis.gov/casestatus/landing.do">Online Case Status</a></li>
+          <ul id="h3">
+            <!-- <li><a href="https://egov.uscis.gov/casestatus/landing.do">Online Case Status</a></li>
             <li><a href="https://my.uscis.gov/findadoctor">Civil Surgeon Locator</a></li>
             <li><a href="https://www.uscis.gov/green-card/green-card-eligibility/green-card-through-the-diversity-immigrant-visa-program">Diversity Visa Lottery</a></li>
             <li><a href="https://www.uscis.gov/ar-11">Filing a Change of Address</a></li>
             <li><a href="https://egov.uscis.gov/office-locator/#/">Finding a USCIS Office</a></li>
-            <li><a href="https://my.uscis.gov/en/appointment/v2">Making an InfoPASS appt.</a></li>
+            <li><a href="https://my.uscis.gov/en/appointment/v2">Making an InfoPASS appt.</a></li> -->
           </ul>
         </div>
         <div class="col-lg-4 col-md-4 mt-4 ">
           <h4>US Passport and travel</h4>
           <div class="sepr mt-1"></div>
-          <ul>
-            <li><a href="https://travel.state.gov/content/travel/en/passports/have-passport/lost-stolen.html">Lost or Stolen Passport</a></li>
+          <ul id="h4">
+            <!-- <li><a href="https://travel.state.gov/content/travel/en/passports/have-passport/lost-stolen.html">Lost or Stolen Passport</a></li>
             <li><a href="https://travel.state.gov/content/travel/en/passports.html">Application for Passport</a></li>
             <li><a href="https://travel.state.gov/content/travel/en/passports/how-apply/photos.html">Photo specifications</a></li>
-            <li><a href="https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/">Travel Alerts & Warnings</a></li>
+            <li><a href="https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/">Travel Alerts & Warnings</a></li> -->
           </ul>
         </div>
         <div class="col-lg-4 col-md-4 mt-4 ">
           <h4>Citizenship</h4>
           <div class="sepr mt-1"></div>
-          <ul>
-            <li><a href="https://www.uscis.gov/citizenship">Citizenship Resource Center</a></li>
+          <ul id="h5">
+            <!-- <li><a href="https://www.uscis.gov/citizenship">Citizenship Resource Center</a></li> -->
           </ul>
         </div>
       </div>
@@ -187,7 +176,6 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/isotope.pkgd.min.js"></script>
-  <script src="js/ajax-form.js"></script>
   <script src="js/waypoints.min.js"></script>
   <script src="js/jquery.counterup.min.js"></script>
   <script src="js/imagesloaded.pkgd.min.js"></script>
@@ -199,15 +187,76 @@
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/plugins.js"></script>
 
-  <!--contact js-->
-  <script src="js/contact.js"></script>
-  <script src="js/jquery.ajaxchimp.min.js"></script>
-  <script src="js/jquery.form.js"></script>
-  <script src="js/jquery.validate.min.js"></script>
-  <script src="js/mail-script.js"></script>
-  <script src="search.js"></script>
   <script src="js/main.js"></script>
+  <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+    ></script>
 
 </body>
 
 </html>
+
+<script>
+  $(document).ready(function () {
+    const BaseURL = 'http://localhost:5000';
+    axios
+      .get(`${BaseURL}/fetchAllLinks`)
+      .then((res) => {
+        displayLinks(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    //Append Alerts To Client Side
+
+    displayLinks = (res) => {
+      let [Appendh1 ,Appendh2, Appendh3, Appendh4, Appendh5] = ['','','','','','',];
+
+      var h1 = res.filter(category => category.tag_name == 'VISAS related');
+       const h1append = document.querySelector("#h1");
+
+      var h2 = res.filter(category => category.tag_name == 'Compliance');
+       const h2append = document.querySelector("#h2");
+
+      var h3 = res.filter(category => category.tag_name == 'USCIS');
+       const h3append = document.querySelector("#h3");
+      
+      var h4 = res.filter(category => category.tag_name == 'US Passport and travel');
+       const h4append = document.querySelector("#h4");
+
+      var h5 = res.filter(category => category.tag_name == 'Citizenship');
+       const h5append = document.querySelector("#h5");
+
+      h1.forEach(function (link, index) {
+
+        Appendh1 +=`<li><a href="${link.link}">${link.title}</a></li>`;
+          
+      });
+      h1append.innerHTML = Appendh1; 
+
+      h2.forEach(function (link, index) {
+        Appendh2 += `<li><a href="${link.link}"> ${link.title} </a></li>
+        `;
+      });
+      h2append.innerHTML = Appendh2;
+      h3.forEach(function (link, index) {
+        Appendh3 += `<li><a href="${link.link}"> ${link.title} </a></li>
+        `;
+      });
+      h3append.innerHTML = Appendh3;
+      h4.forEach(function (link, index) {
+        Appendh4 = `<li><a href="${link.link}"> ${link.title} </a></li>
+        `;
+      });
+      h4append.innerHTML = Appendh4;
+      h5.forEach(function (link, index) {
+        Appendh5 = `<li><a href="${link.link}"> ${link.title} </a></li>
+        `;
+      });
+      h5append.innerHTML = Appendh5;
+    };
+  });
+</script>

@@ -145,6 +145,7 @@ app.delete('/DeleteLink', routeHandler);
 
 //Api and Main Site Routes (GET)
 app.get('/fetchAllAlerts', routeHandler);
+app.get("/fetchAllLinks", routeHandler);
 
 //Api and Main Site Routes (POST)
 app.post("/userEnquiries", routeHandler);
