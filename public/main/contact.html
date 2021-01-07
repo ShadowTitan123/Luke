@@ -412,67 +412,66 @@
   $(document).ready(function () {
     document.querySelector("#contactForm").addEventListener("submit", function (e) {
       e.preventDefault();
-     
+
       const c_form = document.querySelector("#contactForm");
       const c_name = c_form.elements.namedItem("enqname").value;
       const c_email = c_form.elements.namedItem("enqemail").value;
       const c_subject = c_form.elements.namedItem("enqsubject").value;
       const c_message = c_form.elements.namedItem("enqmessage").value;
- if(c_form != '' && c_name != '' && c_email != '' && c_subject != '' && c_message != ''){
-      axios
-        .post("/userEnquiries", {
-          name: c_name,
-          email: c_email,
-          subject: c_subject,
-          message: c_message,
-        })
-        .then(function (response) {
-          console.log(response.data);
-          if (response.data.status === true) {
-            Toastify({
-              text: "Enquiry sent successfully",
-              duration: 2000,
-              newWindow: true,
-              close: true,
-              gravity: "bottom", // `top` or `bottom`
-              position: "center", // `left`, `center` or `right`
-              backgroundColor: "linear-gradient(to right, #0956A4, #0956A4)",
-              stopOnFocus: true, // Prevents dismissing of toast on hover
-              onClick: function () {}, // Callback after click
-            }).showToast();
-               const c_form = document.querySelector("#contactForm");
-               c_form.reset(); 
-            return false;
-          } else {
-            Toastify({
-              text: "Failed To submit Query",
-              duration: 2000,
-              newWindow: true,
-              close: true,
-              gravity: "bottom", // `top` or `bottom`
-              position: "center", // `left`, `center` or `right`
-              backgroundColor: "linear-gradient(to right, #ed213a, #93291e)",
-              stopOnFocus: true, // Prevents dismissing of toast on hover
-              onClick: function () {}, // Callback after click
-            }).showToast();
-          }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-
-      }else{
-         Toastify({
-              text: "empty feilds",
-              duration: 2000,
-              newWindow: true,
-              close: true,
-              gravity: "bottom", // `top` or `bottom`
-              position: "center", // `left`, `center` or `right`
-              backgroundColor: "linear-gradient(to right, #ed213a, #93291e)",
-              stopOnFocus: true, // Prevents dismissing of toast on hover
-              onClick: function () {}, // Callback after click
-            }).showToast();
+      if (c_form != "" && c_name != "" && c_email != "" && c_subject != "" && c_message != "") {
+        axios
+          .post("/userEnquiries", {
+            name: c_name,
+            email: c_email,
+            subject: c_subject,
+            message: c_message,
+          })
+          .then(function (response) {
+            console.log(response.data);
+            if (response.data.status === true) {
+              Toastify({
+                text: "Enquiry sent successfully",
+                duration: 2000,
+                newWindow: true,
+                close: true,
+                gravity: "bottom", // `top` or `bottom`
+                position: "center", // `left`, `center` or `right`
+                backgroundColor: "linear-gradient(to right, #0956A4, #0956A4)",
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                onClick: function () {}, // Callback after click
+              }).showToast();
+              const c_form = document.querySelector("#contactForm");
+              c_form.reset();
+              return false;
+            } else {
+              Toastify({
+                text: "Failed To submit Query",
+                duration: 2000,
+                newWindow: true,
+                close: true,
+                gravity: "bottom", // `top` or `bottom`
+                position: "center", // `left`, `center` or `right`
+                backgroundColor: "linear-gradient(to right, #ed213a, #93291e)",
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                onClick: function () {}, // Callback after click
+              }).showToast();
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      } else {
+        Toastify({
+          text: "empty feilds",
+          duration: 2000,
+          newWindow: true,
+          close: true,
+          gravity: "bottom", // `top` or `bottom`
+          position: "center", // `left`, `center` or `right`
+          backgroundColor: "linear-gradient(to right, #ed213a, #93291e)",
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+          onClick: function () {}, // Callback after click
+        }).showToast();
       }
     });
   });
