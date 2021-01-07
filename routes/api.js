@@ -597,7 +597,7 @@ router.get("/api/GetHomepageCounts", (req, res) => {
    }
   
   if(OutputCounts.length>=3){
-    console.log(OutputCounts)
+   // console.log(OutputCounts)
     SendResponse(OutputCounts);
   }
   }
