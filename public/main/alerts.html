@@ -236,7 +236,7 @@
 
 <script>
   $(document).ready(function () {
-    const BaseURL = 'http://localhost:5000';
+    const BaseURL = "http://localhost:5000";
     axios
       .get(`${BaseURL}/fetchAllAlerts`)
       .then((res) => {
@@ -252,8 +252,17 @@
       let AppendData = "";
       const alertList = document.querySelector("#fetchAlertApi");
       res.forEach(function (alert, index) {
+        function formatDate(input) {
+          var datePart = input.match(/\d+/g),
+            year = datePart[0].substring(), // get only two digits
+            month = datePart[1],
+            day = datePart[2];
+
+          return day + "-" + month + "-" + year;
+        }
+
         AppendData += `<li>
-            <h4>${alert.alert_Date}</h4>
+            <h4>${formatDate(alert.alert_Date)}</h4>
             <a href="alertdetails.html#${alert.id}" ta3rget="_blank"><span>${alert.alert_title}</span></a>
           </li>
         `;

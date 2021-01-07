@@ -139,7 +139,7 @@
                 <div class="col-sm-6">
                   <div class="form-group">
                     <input
-                      class="form-control valid"
+                      class="form-control"
                       name="enqname"
                       id="name"
                       type="text"
@@ -147,13 +147,15 @@
                       onblur="this.placeholder = 'Enter your name'"
                       placeholder="Enter your name"
                       autocomplete="off"
+                      required="required"
+                      minlength="4"
                     />
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <input
-                      class="form-control valid"
+                      class="form-control"
                       name="enqemail"
                       id="email"
                       type="email"
@@ -161,6 +163,7 @@
                       onblur="this.placeholder = 'Enter email address'"
                       placeholder="Email"
                       autocomplete="off"
+                      required="required"
                     />
                   </div>
                 </div>
@@ -175,6 +178,9 @@
                       onblur="this.placeholder = 'Enter Subject'"
                       placeholder="Enter Subject"
                       autocomplete="off"
+                      required="required"
+                      minlength="6"
+                      maxlength="100"
                     />
                   </div>
                 </div>
@@ -190,6 +196,9 @@
                       onblur="this.placeholder = 'Enter Message'"
                       placeholder="Enter Message"
                       autocomplete="off"
+                      required="required"
+                      minlength="20"
+                      maxlength="600"
                     ></textarea>
                   </div>
                 </div>
@@ -403,12 +412,13 @@
   $(document).ready(function () {
     document.querySelector("#contactForm").addEventListener("submit", function (e) {
       e.preventDefault();
+     
       const c_form = document.querySelector("#contactForm");
       const c_name = c_form.elements.namedItem("enqname").value;
       const c_email = c_form.elements.namedItem("enqemail").value;
       const c_subject = c_form.elements.namedItem("enqsubject").value;
       const c_message = c_form.elements.namedItem("enqmessage").value;
-
+ if(c_form != '' && c_name != '' && c_email != '' && c_subject != '' && c_message != ''){
       axios
         .post("/userEnquiries", {
           name: c_name,
@@ -450,6 +460,20 @@
         .catch(function (error) {
           console.log(error);
         });
+
+      }else{
+         Toastify({
+              text: "empty feilds",
+              duration: 2000,
+              newWindow: true,
+              close: true,
+              gravity: "bottom", // `top` or `bottom`
+              position: "center", // `left`, `center` or `right`
+              backgroundColor: "linear-gradient(to right, #ed213a, #93291e)",
+              stopOnFocus: true, // Prevents dismissing of toast on hover
+              onClick: function () {}, // Callback after click
+            }).showToast();
+      }
     });
   });
 </script>

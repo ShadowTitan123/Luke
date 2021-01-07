@@ -22,6 +22,7 @@ $(document).ready(function () {
           subject: {
             required: true,
             minlength: 6,
+            maxlength: 100,
           },
           number: {
             required: true,
@@ -34,6 +35,7 @@ $(document).ready(function () {
           message: {
             required: true,
             minlength: 20,
+            minlength: 600,
           },
         },
         messages: {
@@ -44,6 +46,7 @@ $(document).ready(function () {
           subject: {
             required: "enter a valid subject",
             minlength: "your subject must consist of at least 6 characters",
+            maxlength: "your subject must consist of not more than 100 characters",
           },
           number: {
             required: "enter a valid mobile number",
@@ -55,6 +58,7 @@ $(document).ready(function () {
           message: {
             required: "enter a valid message to send this form.",
             minlength: "your message must consist of atleast 10 characters",
+            maxlength: "your message must consist of not more than 600 characters",
           },
         },
       });
