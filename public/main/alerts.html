@@ -131,70 +131,7 @@
         <div class="row">
           <div class="col-lg-12">
             <ul id="fetchAlertApi">
-              <!-- <li>
-              <h4>29/10/2020</h4>
-              <a href="alertdetails.html#h-1Blottery" target="_blank"><span>Selection based on highest wages may be replaced to H-1B lottery</span></a>
-            </a>
-            <main rel="main">
-              <div class="notification">
-                <svg viewbox="-10 0 35 35">
-                  <path class="notification--bell" d="M14 12v1H0v-1l0.73-0.58c0.77-0.77 0.81-3.55 1.19-4.42 0.77-3.77 4.08-5 4.08-5 0-0.55 0.45-1 1-1s1 0.45 1 1c0 0 3.39 1.23 4.16 5 0.38 1.88 0.42 3.66 1.19 4.42l0.66 0.58z"></path>
-                  <path class="notification--bellClapper" d="M7 15.7c1.11 0 2-0.89 2-2H5c0 1.11 0.89 2 2 2z"></path>
-                </svg>
-              </div>
-            </main>
-          </li>
-          <li>
-            <h4>20/10/2020</h4><a href="alertdetails.html#lawsuitsDOL" target="_blank"><span>Various claims documented against DOL for wage increments</span></a>
-            <main rel="main">
-              <div class="notification">
-                <svg viewbox="-10 0 35 35">
-                  <path class="notification--bell" d="M14 12v1H0v-1l0.73-0.58c0.77-0.77 0.81-3.55 1.19-4.42 0.77-3.77 4.08-5 4.08-5 0-0.55 0.45-1 1-1s1 0.45 1 1c0 0 3.39 1.23 4.16 5 0.38 1.88 0.42 3.66 1.19 4.42l0.66 0.58z"></path>
-                  <path class="notification--bellClapper" d="M7 15.7c1.11 0 2-0.89 2-2H5c0 1.11 0.89 2 2 2z"></path>
-                </svg>
-              </div>
-            </main>
-          </li>
-          <li>
-            <h4>19/10/2020</h4>
-            <a href="alertdetails.html#bordershut10" target="_blank"><span>North and South borders shut until further notice</span></a>
-          </li>
-          <li>
-            <h4>16/10/2020</h4>
-            <a href="alertdetails.html#i129petition" target="_blank"><span>I-129 & I-140 petitions premium processing fees increased</span></a>
-          </li>
-          <li>
-            <h4>12/10/2020</h4>
-            <a href="alertdetails.html#h-1BPrograms" target="_blank"><span>Proposed sweeping changes to H-1B programs</span></a>
-          </li>
-          <li>
-            <h4>12/10/2020</h4>
-            <a href="alertdetails.html#prevalingWages" target="_blank"><span>Dramatically increase of prevailing wages</span></a>
-          </li>
-          <li>
-            <h4>01/10/2020</h4>
-            <a href="alertdetails.html#premiumExpansion" target="_blank"><span>Expansion through premium processing</span></a>
-          </li>
-          <li>
-            <h4>30/09/2020</h4>
-            <a href="alertdetails.html#uscisFees" target="_blank"><span>Increase of USCIS fee halted</span></a>
-          </li>
-          <li>
-            <h4>30/09/2020</h4>
-            <a href="alertdetails.html#h1bRegulations" target="_blank"><span>Regulations for forthcoming H-1B & prevailing wages</span></a>
-          </li>
-          <li>
-            <h4>25/09/2020</h4>
-            <a href="alertdetails.html#ebPriority" target="_blank"><span>EB priority dates for October 2020 changed Significantly</span></a>
-          </li>
-          <li>
-            <h4>23/09/2020</h4>
-            <a href="alertdetails.html#everify" target="_blank"><span>Remote extended of I-9 & E-Verify procedures through 19/11/2020</span></a>
-          </li>
-          <li>
-            <h4>23/09/2020</h4>
-            <a href="alertdetails.html#bordershut09" target="_blank"><span>North & South borders to remain shut through 21/10/2020</span></a>
-          </li> -->
+              <!-- API FETCH ALERTS  -->
             </ul>
           </div>
         </div>
@@ -213,7 +150,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/ajax-form.js"></script>
     <script src="js/waypoints.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
     <script src="js/imagesloaded.pkgd.min.js"></script>
@@ -231,7 +167,6 @@
       integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
       crossorigin="anonymous"
     ></script>
-    
   </body>
 </html>
 
@@ -253,11 +188,11 @@
       let AppendData = "";
       const alertList = document.querySelector("#fetchAlertApi");
       var i = 0;
-      let notification = '';
+      let notification = "";
       res.forEach(function (alert, index) {
-        if(i >= 2){
-            notification = ``;
-        }else{
+        if (i >= 2) {
+          notification = ``;
+        } else {
           i++;
           notification = `
             <main rel="main">

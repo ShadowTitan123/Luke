@@ -143,7 +143,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/ajax-form.js"></script>
     <script src="js/waypoints.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
     <script src="js/imagesloaded.pkgd.min.js"></script>
@@ -155,13 +154,6 @@
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/plugins.js"></script>
 
-    <!--contact js-->
-    <script src="js/contact.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
-    <script src="search.js"></script>
     <script src="js/main.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
@@ -179,12 +171,12 @@
         var url_string = window.location.href;
         var url = new URL(url_string);
         var c = url.searchParams.get("id");
-        console.log(c);
+        //console.log(c);
         const BaseURL = "http://localhost:5000";
         axios
           .get(`${BaseURL}/api/GetAlertById/${c}`)
           .then((res) => {
-            console.log(res.data);
+            //console.log(res.data);
             displayAlert(res.data);
           })
           .catch((err) => {
@@ -223,9 +215,9 @@
                 <h3 class="mb-2">${res.data[0].alert_title}</h3>
                 <div style="border-bottom: 6px solid #0956a4"></div>
                 <div class="mt-2 mb-3 text-muted">${formatteddate}</div>
-                <p class="description" >
+                <div class="description">
                   ${finaldescription}
-                </p>
+                </div>
                 
                 <p style="text-align: center">***</p>
                 <p>
@@ -246,7 +238,7 @@
               </div>
             </div>
           </div>`;
-          console.log(document.getElementById("alertBrief"));
+          //console.log(document.getElementById("alertBrief"));
           let divion = document.getElementById("alertBrief");
           //  console.log(AppendData)
           divion.innerHTML = AppendData;
